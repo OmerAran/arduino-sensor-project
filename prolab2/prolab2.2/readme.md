@@ -21,7 +21,7 @@ sistemleri kullanıcı tarafından uzaktan kontrol edilebilen cihazları içerir
 <li> Ev ile ilgili bilgilerin telefondan otomatik alınması,</li>
 <li> Otomatik toprak sulama sistemi, vb.</ul>
 
-#Expectations
+###Expectations
 
 <ul>
 <li> Yangın alarmı(fire alarm),</li>
@@ -31,7 +31,7 @@ sistemleri kullanıcı tarafından uzaktan kontrol edilebilen cihazları içerir
 </ul>
 
 
-#Requirements
+###Requirements
 <ul>
 <li>Must use Aurdino Mega</li>
 <li>Flame Sensor and buzzer</li>
@@ -41,7 +41,7 @@ sistemleri kullanıcı tarafından uzaktan kontrol edilebilen cihazları içerir
 <li>keypad,red and green leds and password</li>
 </ul>
 
-#Constraints
+###Constraints
 
 <ul>
 <li>Use Aurdino IDE and Proteus.</li> 

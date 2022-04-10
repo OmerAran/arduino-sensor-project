@@ -1,4 +1,4 @@
-#Smart House Simulator 
+<h1>Smart House Simulator</h1>
 <h3>Our task is build a <b>Smart House Simulator</b> with using Arduino(Aurdino Mega) and Proteus.</h3>
 <p>Akıllı Ev Sistemleri
 Nesnelerin İnterneti (IoT) uygulamalarının yaygınlaşması ile insanların nesneler ile olan

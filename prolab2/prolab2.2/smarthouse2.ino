@@ -44,12 +44,17 @@ void lcd_setup(){
   analogReference(INTERNAL1V1);
   lcd.begin(16,2);
   lcd.setCursor(0, 0);
-  lcd.print("   Made by UMUT and ÖMER ");      
+  lcd.print("   Made by UMUT and OMER ");      
   lcd.setCursor(0, 1);
   lcd.print("       ");
   delay (100);
   lcd.clear();   
   }
+
+void lm35_setup(){
+  pinMode(A0,INPUT);
+  Serial.begin(9600);
+}
 void fire_alarm_setup(){
   
   //pin,led tanımla
@@ -69,6 +74,7 @@ void pir_sensor_setup(){
 
 void keypad_setup(){
   //input_password.reserve(32);
+   analogReference(INTERNAL1V1);
    pinMode(keypadLedGreen, OUTPUT);
    pinMode(keypadLedRed, OUTPUT);
    Serial.begin(9600);
@@ -80,6 +86,7 @@ void keypad_setup(){
 
 void setup() {
   // put your setup code here, to run once:
+  lm35_setup();
   fire_alarm_setup();
   pir_sensor_setup();
   keypad_setup();
@@ -89,12 +96,10 @@ void setup() {
 
 
 void lcd_loop(){
-  lcd.clear();
-   temp = analogRead(A1);                                                    //temp = temp * 0.48828125;  //etmp=temp*(5.0/1023.0)*100;
- float  onetemp =temp*(5000.0/1023.0);;
- float  lasttemp = onetemp / 10.0 ;
-  lcd.print("Sıcaklık: ");
-  lcd.print(lasttemp);
+  lcd.clear();                                                   //temp = temp * 0.48828125;  //etmp=temp*(5.0/1023.0)*100;
+  temp=(5.0*analogRead(A0)*100.0)/1024.0;
+  lcd.print("Sicaklik: ");
+  lcd.print(temp);
   lcd.println("*C");
 delay(300);
  

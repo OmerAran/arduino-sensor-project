@@ -73,7 +73,7 @@ void pir_sensor_setup(){
 
 
 void keypad_setup(){
-  //input_password.reserve(32);
+  input_password.reserve(32);
    analogReference(INTERNAL1V1);
    pinMode(keypadLedGreen, OUTPUT);
    pinMode(keypadLedRed, OUTPUT);

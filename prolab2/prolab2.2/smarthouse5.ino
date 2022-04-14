@@ -55,10 +55,10 @@ void lcd_setup(){
   analogReference(INTERNAL1V1);
   lcd.begin(16,2);
   lcd.setCursor(0, 0);
-  lcd.print("   Made by UMUT and OMER ");      
+  lcd.print("Umut SUTCU 200202038   ");      
   lcd.setCursor(0, 1);
-  lcd.print("       ");
-  delay (100);
+  lcd.print("Omer ARAN  190202012    ");
+  delay (1000);
   lcd.clear();   
   }
 
@@ -107,12 +107,21 @@ void setup() {
 
 
 void lcd_loop(){
- // lcd.clear();                                                   //temp = temp * 0.48828125;  //etmp=temp*(5.0/1023.0)*100;
- // temp=(5.0*analogRead(A0)*100.0)/1024.0;
-  //lcd.print("Sicaklik: ");
-  //lcd.print(temp);
- // lcd.println("*C");
-delay(300);
+  lcd.clear();                                                   //temp = temp * 0.48828125;  //etmp=temp*(5.0/1023.0)*100;
+  temp=analogRead(A0)/9.31;
+  lcd.print("Sicaklik: ");
+  lcd.print(temp);
+  lcd.println("*C");
+  if(temp>30){
+    lcd.setCursor(0,1);
+    lcd.print("Sicaklik yukseldi");
+  }
+  if(temp<20){
+    lcd.setCursor(0,1);
+    lcd.print("Sicaklik dustu");
+  }
+
+  delay(300);
  
   }
 void fire_alarm_loop(){
@@ -120,14 +129,12 @@ void fire_alarm_loop(){
    fire_Flame = digitalRead(fire_FlamePin);
  if (fire_Flame == HIGH)
  {
-  Serial.println("Yangın tespit edildi.");
   digitalWrite(fire_Buzzer, HIGH);
   delay(2000);
   digitalWrite(fire_Buzzer, LOW);
  }
  else
  {
- Serial.println("Yangın yok.");
  digitalWrite(fire_Buzzer, LOW);
  }
 
@@ -149,36 +156,37 @@ void pir_sensor_loop(){
   }
   }
 
-
+int anahtar=0;
 
 void keypad_loop(){
-   lcd.setCursor(0,0);
-  lcd.print("Enter Password:");
+   //lcd.setCursor(0,0);
+  //lcd.print("Enter Password:");
 
   customKey = customKeypad.getKey();
   if (customKey){
     Data[data_count] = customKey; 
-    lcd.setCursor(data_count,1); 
-    lcd.print(Data[data_count]); 
+   // lcd.setCursor(data_count,1); 
+    //lcd.print(Data[data_count]); 
     data_count++; 
     }
     
   if(data_count == Password_Length-1){
     data_count=0;
     delay(100);
-    lcd.clear();
+    //lcd.clear();
 
     if(strcmp(Data,Master)==0){
-     lcd.print("Correct");
+    // lcd.print("Dogru");
       digitalWrite(keypadLedGreen, HIGH); 
-      delay(1000);
+      delay(300);
       digitalWrite(keypadLedGreen, LOW); 
+      anahtar=1;
       
       }
     else {
       digitalWrite(keypadLedRed, HIGH); 
-      lcd.print("Incorrect");
-      delay(1000);
+      //lcd.print("Yanlis");
+      delay(300);
       digitalWrite(keypadLedRed, LOW); 
       }
     
@@ -193,8 +201,13 @@ void keypad_loop(){
 void loop() {
   // put your main code here, to run repeatedly:
   keypad_loop();
-// fire_alarm_loop();
- // pir_sensor_loop();
-//  lcd_loop();
+  if(anahtar==1){
+    fire_alarm_loop();
+    pir_sensor_loop();
+    lcd_loop();
+  }
+  //fire_alarm_loop();
+  //pir_sensor_loop();
+  //lcd_loop();
 
 }

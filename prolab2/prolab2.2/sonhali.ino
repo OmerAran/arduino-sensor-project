@@ -15,7 +15,7 @@ char customKey;
 const byte satir = 4;
 const byte sutun = 3;
 
-char hexaKeys[satir][sutun] = {
+char Keys[satir][sutun] = {
   {'1', '2', '3'},
   {'4', '5', '6'},
   {'7', '8', '9'},
@@ -25,7 +25,7 @@ char hexaKeys[satir][sutun] = {
 byte satirpin[satir] = {27, 28, 29, 30};
 byte sutunpin[sutun] = {24, 25, 26};
 
-Keypad customKeypad = Keypad(makeKeymap(hexaKeys), satirpin, sutunpin, satir, sutun);
+Keypad customKeypad = Keypad(makeKeymap(Keys), satirpin, sutunpin, satir, sutun);
 
 
 const int rs = 2, en = 3, d4 = 4, d5 = 5, d6 = 6, d7 = 7;

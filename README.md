@@ -1,6 +1,6 @@
 # Kocaeli University Programming Laboratory Project
 
-You can find project codes in prolab/prolab2.2
+You can find project codes under smarthouse folder.
 
 <h1>Smart House Simulator</h1>
 <h3>Our task is build a <b>Smart House Simulator</b> with using Arduino(Aurdino Mega) and Proteus.</h3>

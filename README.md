@@ -1,1 +1,1 @@
-# kou-projects
+# Kocaeli University Programming Laboratory Project
